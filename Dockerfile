@@ -1,3 +1,3 @@
-FROM alpine:3.1
+FROM alpine:3.19
 RUN apk --update add socat
 ENTRYPOINT ["socat"]
