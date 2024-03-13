@@ -7,7 +7,7 @@ jobs:
       runs-on: ubuntu-22.04
       steps:
         - uses: actions/checkout@v4
-        - name: Run docker
+        - name: Run and test docker
           run: |
             docker build .
     
@@ -40,9 +40,9 @@ jobs:
           id: meta
           uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
           with:
-            images: w4bo/socat
+            images: ${{ secrets.DOCKER_IMAGENAME }}
             tags: |
-              ${{steps.tag.outputs.version}}
+              ${{ steps.tag.outputs.version }}
               latest
     
         - name: Build and push Docker image
